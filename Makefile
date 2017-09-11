@@ -11,5 +11,11 @@ paint:
 music:
 	$(CC) $(LIBS) music.cpp $(CFLAGS) -lz
 
+video:
+	$(CC) $(LIBS) video.cpp $(CFLAGS) -lz
+
+video2:
+	$(CC) $(LIBS) video2.cpp $(CFLAGS) -lz
+
 clean:
 	rm *.out

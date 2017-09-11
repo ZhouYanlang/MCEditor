@@ -113,30 +113,6 @@ void MCEditor::clearArrays(int l1, int l2, int l3)
     del3DUIArray(skylight, l1, l2, l3);
 }
 
-ui*** MCEditor::new3DUIArray(int l1, int l2, int l3)
-{
-    ui*** A;
-    A = new ui** [l1];
-    for (int i = 0; i < l1; i++)
-    {
-        A[i] = new ui* [l2];
-        for (int j = 0; j < l2; j++)
-            A[i][j] = new ui [l3];
-    }
-    return A;
-}
-
-void MCEditor::del3DUIArray(ui*** &A, int l1, int l2, int l3)
-{
-    for (int i = 0; i < l1; i++)
-    {
-        for (int j = 0; j < l2; j++)
-            delete [] A[i][j];
-        delete [] A[i];
-    }
-    delete A; A = 0;
-}
-
 void MCEditor::initBlocks(const MCRegion &R)
 {
     int d = 30;

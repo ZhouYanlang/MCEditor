@@ -14,6 +14,8 @@ public:
     int x_len, z_len, y_len,
         x_ori, z_ori, y_ori;
 
+    MCRegion() {};
+
     MCRegion(int x0, int z0, int y0,
              int xl, int zl, int yl);
     
@@ -45,10 +47,6 @@ private:
     void initArrays(int l1, int l2, int l3);
 
     void clearArrays(int l1, int l2, int l3);
-
-    ui*** new3DUIArray(int l1, int l2, int l3);
-
-    void del3DUIArray(ui*** &A, int l1, int l2, int l3);
 
     void initBlocks(const MCRegion &A);
 

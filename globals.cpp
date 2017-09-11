@@ -116,6 +116,32 @@ ull compress(uc *dest, ull dest_len, uc* src, ull src_len)
     return len;
 }
 
+//create a new l1 * l2 * l3 unsigned int array
+ui*** new3DUIArray(int l1, int l2, int l3)
+{
+    ui*** p;
+    p = new ui** [l1];
+    for (int i = 0; i < l1; i++)
+    {
+        p[i] = new ui* [l2];
+        for (int j = 0; j < l2; j++)
+            p[i][j] = new ui [l3];
+    }
+    return p;
+}
+
+//delete a new l1 * l2 * l3 unsigned int array
+void del3DUIArray(ui*** &p, int l1, int l2, int l3)
+{
+    for (int i = 0; i < l1; i++)
+    {
+        for (int j = 0; j < l2; j++)
+            delete [] p[i][j];
+        delete [] p[i];
+    }
+    delete p; p = 0;
+}
+
 //get the opacity of block id
 int get_opacity(ui id)
 {

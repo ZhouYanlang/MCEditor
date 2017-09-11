@@ -85,6 +85,12 @@ void decompress(uc *dest, ull dest_len, uc* src, ull src_len);
 //compress src into dest and return the length of compressed data
 ull compress(uc *dest, ull dest_len, uc* src, ull src_len);
 
+//create a new l1 * l2 * l3 unsigned int array
+ui*** new3DUIArray(int l1, int l2, int l3);
+
+//delete a new l1 * l2 * l3 unsigned int array
+void del3DUIArray(ui*** &A, int l1, int l2, int l3);
+
 //get the opacity of block id
 int get_opacity(ui id);
 

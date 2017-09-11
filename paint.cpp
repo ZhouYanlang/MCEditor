@@ -36,7 +36,7 @@ MCEditor editor;
 int main()
 {
     int x0, y0, z0;
-    fscanf(stdin, "%d %d %d", &x0, &y0, &z0);
+    fscanf(stdin, "%d%d%d", &x0, &y0, &z0);
     
     FILE *in = fopen("bmp.txt", "r");
     

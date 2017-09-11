@@ -12,7 +12,7 @@ string MCAFileNameXZ(int x, int z)
     int len = sprintf(tmp, "./region/r.%d.%d.mca", x, z);
     if (len < 0)
     {
-        fprintf(stdout, "Buffer overflow when generating mca file name.\n");
+        fprintf(stderr, "Buffer overflow when generating mca file name.\n");
         exit(0);
     }
     string res = tmp;
@@ -468,6 +468,46 @@ node *MCACoder::newBlockEntityNode(BlockEntity *entity)
         T->addChild(u);
     }
 
+    if (entity->entity_id == "minecraft:command_block")
+    {
+        BlockEntityCommand *cmdblock = (BlockEntityCommand*)entity;
+
+        u = new node(TAG_STRING, "Command");
+        u->tag.vs = cmdblock->command;
+        T->addChild(u);
+
+        u = new node(TAG_INT, "SuccessCount");
+        u->tag.vi = 0;
+        T->addChild(u);
+
+        u = new node(TAG_STRING, "LastOutput");
+        u->tag.vs = "";
+        T->addChild(u);
+
+        u = new node(TAG_BYTE, "TrackOutput");
+        u->tag.vi = 0;
+        T->addChild(u);
+
+        u = new node(TAG_BYTE, "powered");
+        u->tag.vi = 0;
+        T->addChild(u);
+
+        u = new node(TAG_BYTE, "auto");
+        u->tag.vi = 0;
+        T->addChild(u);
+
+        u = new node(TAG_BYTE, "conditionMet");
+        u->tag.vi = 1;
+        T->addChild(u);
+
+        u = new node(TAG_BYTE, "UpdateLastExecution");
+        u->tag.vi = 1;
+        T->addChild(u);
+
+        u = new node(TAG_LONG, "LastExecution");
+        u->tag.vi = 0;
+        T->addChild(u);
+    }
     //TODO
 
     return T;
